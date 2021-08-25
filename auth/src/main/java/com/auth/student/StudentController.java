@@ -1,6 +1,7 @@
 package com.auth.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import com.auth.user.User;
 
 @RestController
 @RequestMapping(path = "api/v1/student")
@@ -23,11 +24,16 @@ public class StudentController {
 
   @Autowired
   public StudentController(StudentService studentService) {
-    this.studentService = studentService;
+	this.studentService = studentService;
   }
   
   @GetMapping(value="getStudents")
-	public List<Student> getStudents(HttpServletRequest request) {
+	public List<Student> getStudents() {
+		
+		// Example of getting the User object from session.
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(user.getUsername());
+		
 		return studentService.getStudents();
 	}
 
