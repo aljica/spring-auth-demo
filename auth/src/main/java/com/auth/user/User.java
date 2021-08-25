@@ -22,6 +22,17 @@ public class User implements UserDetails {
 	private String password;
 	private String role;
 
+	public User() {
+
+	}
+
+	public User(Integer id, String username, String password, String role) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -57,7 +68,7 @@ public class User implements UserDetails {
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(role));
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + this.role));
         return authorities;
     }
 

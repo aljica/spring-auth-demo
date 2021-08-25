@@ -1,4 +1,11 @@
+//import SockJS from "sockjs-client";
+
 const WelcomeScreen = (props) => {
+
+	/*let sock = new SockJS("http://localhost:8080/gs-guide-websocket");
+	sock.onopen = function() {
+		console.log('opened');
+	};*/
 
 	async function getData() {
 		try {
