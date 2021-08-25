@@ -17,7 +17,8 @@ public class StudentConfig {
       Student mariam = new Student(1L, "Mariam", "mariam@gmail.com", LocalDate.of(2000, Month.FEBRUARY, 5));
       Student alex = new Student(2L, "Alex", "alex@gmail.com", LocalDate.of(2003, Month.JANUARY, 4));
 
-      repository.saveAll(List.of(mariam, alex));
+	  repository.save(mariam);
+	  repository.save(alex);
     };
   }
 }

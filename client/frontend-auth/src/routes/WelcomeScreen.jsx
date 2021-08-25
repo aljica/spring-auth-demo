@@ -7,9 +7,13 @@ const WelcomeScreen = (props) => {
 		console.log('opened');
 	};*/
 
+	const url = window.location.host;
+	const testingURL = "http://localhost:8080";
+	console.log(url + "/api");
+	
 	async function getData() {
 		try {
-			const response = await fetch("http://localhost:8080/api/v1/student/getStudents");
+			const response = await fetch(testingURL + "/api/v1/student/getStudents");
 			if (response.status != 200) {
 				//props.history.push("/login");
 				console.log("response not 200 ok");
@@ -23,7 +27,7 @@ const WelcomeScreen = (props) => {
 
 	function logout() {
 		try {
-			fetch("http://localhost:8080/logout");
+			fetch(url + "/logout");
 		} catch (e) {
 			console.log('logout unsuccessful');
 		}

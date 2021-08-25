@@ -30,7 +30,8 @@ public class UserUtil {
 			User john = new User(1, "john", johnpwd, "USER");
 			john.getAuthorities();
 
-			userRepo.saveAll(List.of(user, john));
+			userRepo.save(user);
+			userRepo.save(john);
 		};
 	}
 }
