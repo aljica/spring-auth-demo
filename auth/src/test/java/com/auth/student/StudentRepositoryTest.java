@@ -18,7 +18,6 @@ public class StudentRepositoryTest {
   private StudentRepository underTest;
 
   @Test
-  @Disabled
   void itShouldCheckIfStudentExistsByEmail() {
     // given
     String email = "jamila@gmail.com";
@@ -35,7 +34,6 @@ public class StudentRepositoryTest {
   }
 
   @Test
-  @Disabled
   void studentEmailShouldNotExist() {
     // given
     String email = "jamila@gmail.com";

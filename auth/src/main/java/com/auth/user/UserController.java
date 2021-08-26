@@ -1,6 +1,7 @@
 package com.auth.user;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,11 +21,17 @@ public class UserController {
 		this.userDetailsService = userDetailsService;
 	}
 
-	@GetMapping(value="getUserAuthorities")
+	@GetMapping(value = "getUserAuthorities")
 	public Collection<? extends GrantedAuthority> getUserAuths() {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
 		return userDetailsService.getUserAuths(user.getUsername());
+	}
+
+	@GetMapping(value = "getUsers")
+	public List<String> getAllUsernames() {
+		List<String> usernames = userDetailsService.getAllUsers();
+		return usernames;
 	}
 	
 }
